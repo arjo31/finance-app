@@ -15,6 +15,13 @@
       "when": 1721978598572,
       "tag": "0001_ambitious_doctor_faustus",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1722194095871,
+      "tag": "0002_curved_cerise",
+      "breakpoints": true
     }
   ]
 }
