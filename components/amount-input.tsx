@@ -66,7 +66,7 @@ export const AmountInput = ({
         intlConfig={{ locale: "en-IN", currency: "INR" }}
       />
       <p className="text-xs text-muted-foreground mt-2">
-        {isIncome && "This will count as a income"}
+        {isIncome && "This will count as an income"}
         {isExpense && "This will count as an expense"}
       </p>
     </div>

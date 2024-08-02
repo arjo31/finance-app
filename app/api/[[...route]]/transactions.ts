@@ -65,7 +65,7 @@ const app = new Hono()
           )
         )
         .orderBy(desc(transactions.date));
-      console.log(data);
+
       return c.json({ data });
     }
   )
@@ -101,7 +101,7 @@ const app = new Hono()
           accountId: transactions.accountId,
         })
         .from(transactions)
-        .innerJoin(accounts, eq(transactions.id, accounts.id))
+        .innerJoin(accounts, eq(transactions.accountId, accounts.id))
         .where(and(eq(transactions.id, id), eq(accounts.userId, auth.userId)));
 
       if (!data) {
@@ -131,7 +131,6 @@ const app = new Hono()
         })
         .returning();
       //[data] = > data : data[0]
-      console.log(data);
       return c.json({ data });
     }
   )
@@ -272,9 +271,11 @@ const app = new Hono()
         .with(transactionToDelete)
         .delete(transactions)
         .where(
-          inArray(transactions, sql`(select id from ${transactionToDelete})`)
+          inArray(transactions.id, sql`(select id from ${transactionToDelete})`)
         )
         .returning();
+
+      console.log(data);
 
       if (!data) {
         return c.json({ error: "Not Found" }, 404);
