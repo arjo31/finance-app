@@ -8,6 +8,8 @@ import { NewCategorySheet } from "@/features/categories/components/new-category-
 import { EditAccountSheet } from "@/features/accounts/components/edit-account-sheet";
 import { EditCategorySheet } from "@/features/categories/components/edit-category-sheet";
 
+import { NewTransactionSheet } from "@/features/transactions/components/new-transaction-sheet";
+
 export const SheetProvider = () => {
   const isMounted = useMountedState(); //To render only in client side
 
@@ -20,12 +22,8 @@ export const SheetProvider = () => {
 
       <NewCategorySheet />
       <EditCategorySheet />
+
+      <NewTransactionSheet />
     </>
   );
 };
-
-//const isMounted = useMountedState() is equivalent to:
-//const [isMounted, setIsMounted] = useState(false);
-// useEffect(() => {
-//     setIsMounted(true);
-// }, [])

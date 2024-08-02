@@ -54,7 +54,7 @@ const app = new Hono()
           account: accounts.name,
         })
         .from(transactions)
-        .innerJoin(accounts, eq(transactions.id, accounts.id))
+        .innerJoin(accounts, eq(transactions.accountId, accounts.id))
         .leftJoin(categories, eq(transactions.categoryId, categories.id))
         .where(
           and(
@@ -65,7 +65,7 @@ const app = new Hono()
           )
         )
         .orderBy(desc(transactions.date));
-
+      console.log(data);
       return c.json({ data });
     }
   )
@@ -131,6 +131,7 @@ const app = new Hono()
         })
         .returning();
       //[data] = > data : data[0]
+      console.log(data);
       return c.json({ data });
     }
   )
