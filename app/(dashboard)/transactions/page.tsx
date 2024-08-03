@@ -1,6 +1,7 @@
 "use client";
 
 import { columns } from "@/app/(dashboard)/transactions/columns";
+import { ImportCard } from "@/app/(dashboard)/transactions/import-card";
 import { UploadButton } from "@/app/(dashboard)/transactions/upload-button";
 import { DataTable } from "@/components/data-table";
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,6 @@ import { useGetTransactions } from "@/features/transactions/api/use-get-transact
 import { useNewTransaction } from "@/features/transactions/hooks/use-new-transaction";
 import { Loader2, Plus } from "lucide-react";
 import { useState } from "react";
-import { ImportCard } from "@/app/(dashboard)/transactions/import-card";
 
 enum VARIANTS {
   LIST = "LIST",
@@ -36,8 +36,8 @@ function TransactionsPage() {
 
   const onCancelImport = () => {
     setImportResults(INITIAL_IMPORT_RESULTS);
-    setVariant(VARIANTS.LIST)
-  }
+    setVariant(VARIANTS.LIST);
+  };
 
   const newTransaction = useNewTransaction();
   const transactionQuery = useGetTransactions();
@@ -64,7 +64,13 @@ function TransactionsPage() {
   }
 
   if (variant === VARIANTS.IMPORT) {
-    return <ImportCard data={importResults.data} onCancel={onCancelImport} onSubmit={()=>{}}/>;
+    return (
+      <ImportCard
+        data={importResults.data}
+        onCancel={onCancelImport}
+        onSubmit={() => {}}
+      />
+    );
   }
 
   return (
@@ -74,8 +80,12 @@ function TransactionsPage() {
           <CardTitle className="text-xl line-clamp-1">
             Transaction History
           </CardTitle>
-          <div className="flex items-center gap-x-2">
-            <Button onClick={newTransaction.onOpen} size="sm">
+          <div className="flex flex-col lg:flex-row gap-y-2 items-center gap-x-2">
+            <Button
+              onClick={newTransaction.onOpen}
+              size="sm"
+              className="w-full lg:w-auto"
+            >
               <Plus className="size-4 mr-2"></Plus>
               Add New Transaction
             </Button>
