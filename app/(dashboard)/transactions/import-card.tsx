@@ -97,7 +97,7 @@ export const ImportCard = ({ data, onCancel, onSubmit }: Props) => {
           <CardTitle className="text-xl line-clamp-1">
             Import Transaction
           </CardTitle>
-          <div className="flex flex-col lg:flex-row items-center gap-y-2">
+          <div className="flex flex-col lg:flex-row items-center gap-y-2 gap-x-2">
             <Button onClick={onCancel} size="sm" className="w-full lg:w-auto">
               Cancel
             </Button>
