@@ -1,3 +1,4 @@
+import { Filters } from "@/components/filters";
 import HeaderLogo from "@/components/header_logo";
 import Navigation from "@/components/navigation";
 import WelcomeMessage from "@/components/welcome_msg";
@@ -21,6 +22,7 @@ function Header() {
           </ClerkLoading>
         </div>
         <WelcomeMessage />
+        <Filters />
       </div>
     </header>
   );
